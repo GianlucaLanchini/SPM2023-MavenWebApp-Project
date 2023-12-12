@@ -57,7 +57,7 @@ class SeleniumTest {
 		Thread.sleep(3000);
 		
 		String at = driver.getTitle();
-		String et = "PROS";
+		String et = "PROS - PROcesses & Services lab | Computer Science division @Unicam";
 		
 		//System.out.println(at);		
 		Thread.sleep(4000);
