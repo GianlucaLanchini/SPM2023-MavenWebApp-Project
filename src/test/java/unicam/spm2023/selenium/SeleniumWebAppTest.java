@@ -33,7 +33,7 @@ public class SeleniumWebAppTest {
 
         //System.out.println(projectPath)
         WebDriver driver = new ChromeDriver();
-        driver.get("http://localhost:8080/spm2023/");
+        driver.get("http://localhost:8080/SPM2023-WebApp/");
 
         Thread.sleep(1000);
 
