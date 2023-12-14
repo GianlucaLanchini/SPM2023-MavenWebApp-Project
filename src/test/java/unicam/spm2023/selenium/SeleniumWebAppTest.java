@@ -3,23 +3,38 @@ package unicam.spm2023.selenium;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
+import java.time.Duration;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.remote.DesiredCapabilities;
 
 public class SeleniumWebAppTest {
 
     private final static Logger LOGGER = Logger.getLogger("SeleniumWebAppTest");
 
+    static ChromeOptions options = new ChromeOptions();
+
+    static WebDriver driver;
+
     @BeforeAll
     static void setupClass() {
         WebDriverManager.chromedriver().setup();
+        options.addArguments("--headless");
+    }
+
+    @BeforeEach
+    void setUp() throws Exception {
+        driver = new ChromeDriver(options);
     }
 
     @Test
@@ -31,8 +46,6 @@ public class SeleniumWebAppTest {
         System.setProperty("webdriver.chrome.driver", projectPath+"/src/test/java/unicam/spm2023/drivers/chromedriver");
         */
 
-        //System.out.println(projectPath)
-        WebDriver driver = new ChromeDriver();
         driver.get("http://localhost:8080/SPM2023-WebApp/");
 
         Thread.sleep(1000);

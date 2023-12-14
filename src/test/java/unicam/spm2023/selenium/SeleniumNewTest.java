@@ -14,6 +14,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -22,13 +23,16 @@ class SeleniumNewTest {
 
 	static String projectPath;	
 	static WebDriver driver;
-	
+
+	static ChromeOptions options = new ChromeOptions();
+
 	/**
 	 * @throws java.lang.Exception
 	 */
 	@BeforeAll
 	static void setupClass() {
 		WebDriverManager.chromedriver().setup();
+		options.addArguments("--headless");
 	}
 	
 	
@@ -46,7 +50,7 @@ class SeleniumNewTest {
 	void setUp() throws Exception {
 
 		//System.setProperty("webdriver.chrome.driver", projectPath+"/src/test/java/unicam/spm2023/drivers/chromedriver");
-		driver = new ChromeDriver();
+		driver = new ChromeDriver(options);
 	}
 
 	/**
