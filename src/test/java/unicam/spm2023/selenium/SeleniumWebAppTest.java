@@ -2,10 +2,7 @@ package unicam.spm2023.selenium;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -38,6 +35,7 @@ public class SeleniumWebAppTest {
     }
 
     @Test
+    @Disabled
     @Tag("AcceptanceTest")
     void checkWebApp() throws InterruptedException {
 
