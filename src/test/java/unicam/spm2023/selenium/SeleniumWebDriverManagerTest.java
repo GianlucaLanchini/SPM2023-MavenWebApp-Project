@@ -1,88 +1,86 @@
 package unicam.spm2023.selenium;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.Keys;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
 import org.openqa.selenium.chrome.ChromeOptions;
 
-import java.util.List;
-import java.util.ArrayList;
-
-class SeleniumNewTest {
+class SeleniumWebDriverManagerTest {
 
 	static String projectPath;	
 	static WebDriver driver;
-
 	static ChromeOptions options = new ChromeOptions();
-
+	
 	/**
-	 * @throws java.lang.Exception
+	 * @throws Exception
 	 */
 	@BeforeAll
-	static void setupClass() {
+	static void setUpBeforeClass() throws Exception {
 		WebDriverManager.chromedriver().setup();
 		options.addArguments("--headless");
 	}
 	
 	
 	/**
-	 * @throws java.lang.Exception
+	 * @throws Exception
 	 */
 	@AfterAll
 	static void tearDownAfterClass() throws Exception {		
 	}
 
 	/**
-	 * @throws java.lang.Exception
+	 * @throws Exception
 	 */
 	@BeforeEach
 	void setUp() throws Exception {
-		//System.setProperty("webdriver.chrome.driver", projectPath+"/src/test/java/unicam/spm2023/drivers/chromedriver");
+
+		//driver = new ChromeDriver();
 		driver = new ChromeDriver(options);
 	}
 
 	/**
-	 * @throws java.lang.Exception
+	 * @throws Exception
 	 */
 	@AfterEach
 	void tearDown() throws Exception {
-		//driver.close();
-		//driver.quit();
+		driver.close();
+		driver.quit();
 	}
 
 	@Test
-	@Tag("AcceptanceTest")
+	@Disabled
 	void checkProsSite() throws InterruptedException {
 		
-		/*driver.get("http://pros.unicam.it/");
+		driver.get("http://pros.unicam.it/");
 
 		Thread.sleep(3000);
 		
 		String at = driver.getTitle();
-		String et = "PROS - PROcesses & Services lab | Computer Science division @Unicam";
+		String et = "PROS[ - PROcesses & Services lab | Computer Science division @Unicam]";
 		
 		//System.out.println(at);		
 		Thread.sleep(4000);
 
-		assertEquals(et,at);*/
+		assertEquals(et,at);
 		
 		
 	}
 	
 	@Test
 	@Disabled
+	@Tag("AcceptanceTest")
 	void checkProsSiteSearch() throws InterruptedException {
 		
 		// navigate your driver to mail.google.com
@@ -123,24 +121,25 @@ class SeleniumNewTest {
 		//TO COMPLETE
 			
 	}
+	
 	@Test
+	@Tag("AcceptanceTest")
 	@Disabled
 	void checkThisWebAppTitle() throws InterruptedException {
-
+		
 		driver.get("http://localhost:8080/spm2023/");
 
 		Thread.sleep(3000);
-
+		
 		String at = driver.getTitle();
 		String et = "SPM 2023";
-
-		//System.out.println(at);
+		
+		//System.out.println(at);		
 		Thread.sleep(4000);
 
 		assertEquals(et,at);
-
-
+		
+		
 	}
-
 
 }
